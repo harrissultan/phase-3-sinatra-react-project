@@ -20,7 +20,18 @@ class ApplicationController < Sinatra::Base
     dogs.to_json
   end
   post "/dogs" do
-    create_dog(name, age, breed,size,description, image)
+    # default_user_id = User.first&.id
+    dogs=Dog.create(name:params[:name],
+               age:params[:age],
+               breed:params[:breed],
+               size:params[:size],
+               description:params[:description],
+               walk_time:params[:true],
+               image:params[:image],
+              #  user_id: default_user_id
+              )
+    dogs.to_json
+    
   end
 
 end
